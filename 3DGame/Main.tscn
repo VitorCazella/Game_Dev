@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://materials/brickOrange/brick.tres" type="Material" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 30, 2, 30 )
+
+[node name="Main" type="Node"]
+
+[node name="Level" type="Spatial" parent="."]
+
+[node name="Box" type="RigidBody" parent="Level"]
+transform = Transform( 0.894864, -0.414517, 0.16551, 0.446338, 0.831066, -0.331831, 0, 0.370817, 0.928706, -7.59983, 8.83077, -3.48133 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Box"]
+transform = Transform( 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, 0, -2.98023e-08, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Box"]
+transform = Transform( 0.999996, 0.00243175, -0.0015493, -0.00243312, 0.999997, -0.000833452, 0.00154725, 0.000837147, 0.999998, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Box2" type="RigidBody" parent="Level"]
+transform = Transform( 0.894864, -0.414517, 0.16551, 0.446338, 0.831066, -0.331831, 0, 0.370817, 0.928706, 8.17504, 7.24984, 2.3311 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Box2"]
+transform = Transform( 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, 0, -2.98023e-08, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Box2"]
+transform = Transform( 0.999996, 0.00243175, -0.0015493, -0.00243312, 0.999997, -0.000833452, 0.00154725, 0.000837147, 0.999998, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Box3" type="RigidBody" parent="Level"]
+transform = Transform( 0.993228, -0.107902, 0.0430835, 0.0969547, 0.565408, -0.819093, 0.0640221, 0.817723, 0.57204, 1.19418, 9.27897, -6.98419 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Box3"]
+transform = Transform( 1, -2.98023e-08, 0, -2.98023e-08, 1, 0, 0, -2.98023e-08, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Box3"]
+transform = Transform( 0.999996, 0.00243175, -0.0015493, -0.00243312, 0.999997, -0.000833452, 0.00154725, 0.000837147, 0.999998, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Floor" type="StaticBody" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Level/Floor"]
+transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Level/Floor"]
+mesh = SubResource( 4 )
+material/0 = ExtResource( 2 )
+
+[node name="Player" parent="Level" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51658, 0 )
