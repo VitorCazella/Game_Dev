@@ -8,6 +8,10 @@ func _ready():
 
 func _physics_process(delta):
 	var move_vec = Vector2()
+	
+	if Input.is_action_just_pressed("ui_esc"):
+		get_tree().quit()
+	
 	if Input.is_action_pressed("move_up"):
 		move_vec.y -= 1
 	if Input.is_action_pressed("move_down"):
