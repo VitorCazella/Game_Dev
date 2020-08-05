@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Feltpen.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://blackboard.jpg" type="Texture" id=2]
 [ext_resource path="res://menu.gd" type="Script" id=3]
+[ext_resource path="res://blue_button11.png" type="Texture" id=4]
+[ext_resource path="res://blue_button12.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
 [node name="Menu" type="Control"]
@@ -26,21 +31,23 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = 512.0
-margin_bottom = 300.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = -24.0
+margin_bottom = -24.0
+custom_constants/separation = 100
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 63.0
+margin_top = 170.0
+margin_right = 976.0
+margin_bottom = 233.0
+rect_pivot_offset = Vector2( 0, 500 )
 custom_fonts/font = SubResource( 1 )
 text = "Placeholder Text"
 align = 1
@@ -49,35 +56,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
-margin_top = 67.0
-margin_right = 1024.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 333.0
+margin_right = 976.0
+margin_bottom = 382.0
+custom_constants/separation = 25
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_right = 902.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Popup" type="Popup" parent="."]
-margin_right = 328.0
-margin_bottom = 213.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="WindowDialog" type="WindowDialog" parent="Popup"]
-visible = true
-margin_left = 48.0
-margin_top = 53.0
-margin_right = 286.0
-margin_bottom = 235.0
-window_title = "Testing popup"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PopupDialog" type="PopupDialog" parent="Popup/WindowDialog"]
-visible = true
-margin_left = 30.0
-margin_top = 26.0
-margin_right = 195.0
-margin_bottom = 133.0
-[connection signal="text_entered" from="VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 927.0
+margin_right = 976.0
+margin_bottom = 49.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+[connection signal="text_entered" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
