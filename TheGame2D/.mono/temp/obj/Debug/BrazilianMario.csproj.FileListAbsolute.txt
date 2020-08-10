@@ -1,0 +1,6 @@
+C:\Users\vitor\Projects\BrazilianMario_Game\.mono\temp\bin\Debug\BrazilianMario.dll
+C:\Users\vitor\Projects\BrazilianMario_Game\.mono\temp\bin\Debug\BrazilianMario.pdb
+C:\Users\vitor\Projects\BrazilianMario_Game\.mono\temp\obj\Debug\BrazilianMario.csprojAssemblyReference.cache
+C:\Users\vitor\Projects\BrazilianMario_Game\.mono\temp\obj\Debug\BrazilianMario.csproj.CoreCompileInputs.cache
+C:\Users\vitor\Projects\BrazilianMario_Game\.mono\temp\obj\Debug\BrazilianMario.dll
+C:\Users\vitor\Projects\BrazilianMario_Game\.mono\temp\obj\Debug\BrazilianMario.pdb
