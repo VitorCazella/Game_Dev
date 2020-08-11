@@ -5,7 +5,7 @@ extends StaticBody2D
 var flip = true
 var start_position
 var end_position
-var SPEED = 1
+var SPEED = 0.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

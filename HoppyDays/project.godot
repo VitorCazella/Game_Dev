@@ -19,6 +19,11 @@ config/name="HoppyDays"
 run/main_scene="res://levels/level1.tscn"
 config/icon="res://Assets/GFX/Players/bunny1_jump.png"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

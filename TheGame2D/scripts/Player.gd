@@ -11,10 +11,7 @@ var motion = Vector2()
 var second_jump = false
 
 var kills = 0
-
-func _ready():
-	pass
-
+	
 func _physics_process(delta):
 	$Camera2D/Label.text = "Enemies killed: "+ String(kills)
 	#get_input_axis()
