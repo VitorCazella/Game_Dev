@@ -18,10 +18,6 @@ _global_script_class_icons={
 config/name="TheGame3D"
 run/main_scene="res://scenes/World.tscn"
 
-[display]
-
-window/size/fullscreen=true
-
 [input]
 
 move_right={
