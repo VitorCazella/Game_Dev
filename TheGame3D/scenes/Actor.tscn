@@ -44,7 +44,7 @@ environment = SubResource( 4 )
 fov = 90.0
 
 [node name="arm" type="MeshInstance" parent="head"]
-transform = Transform( 0.05, 0, 0, 0, -6.82638e-08, 0.05, 0, -0.419, -8.14603e-09, 0.358179, -0.674045, -0.830337 )
+transform = Transform( 0.05, 0, 0, 0, -6.82638e-08, 0.05, 0, -0.499193, -9.70512e-09, 0.358179, -0.674045, -0.830337 )
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 __meta__ = {
@@ -52,7 +52,7 @@ __meta__ = {
 }
 
 [node name="arm2" type="MeshInstance" parent="head"]
-transform = Transform( 0.05, 0, 0, 0, -6.82638e-08, 0.05, 0, -0.419, -8.14603e-09, -0.445032, -0.674045, -0.830337 )
+transform = Transform( 0.05, 0, 0, 0, -6.82638e-08, 0.05, 0, -0.499193, -9.70512e-09, -0.445032, -0.674045, -0.830337 )
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 __meta__ = {
