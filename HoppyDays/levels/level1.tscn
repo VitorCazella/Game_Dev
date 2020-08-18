@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/GFX/Environment/ground_grass_small.png" type="Texture" id=2]
+[ext_resource path="res://Blocks.tres" type="TileSet" id=2]
 [ext_resource path="res://Assets/GFX/Background/bg_layer1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/GFX/Background/bg_layer2.png" type="Texture" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 98.5503, 50.1657 )
 
 [node name="level1" type="Node2D"]
 
@@ -26,45 +23,10 @@ motion_mirroring = Vector2( 2048, 0 )
 texture = ExtResource( 4 )
 centered = false
 
-[node name="Platforms" type="Node2D" parent="."]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platforms"]
-position = Vector2( 496, 640 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Platforms/StaticBody2D"]
-texture = ExtResource( 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platforms/StaticBody2D"]
-polygon = PoolVector2Array( 74.428, 47.9146, 100.856, -20.5164, 99.9126, -42.2255, 90.4739, -49.7764, -84.1429, -49.7764, -95.9413, -44.1132, -101.133, -29.4832, -99.7168, -17.6847, -79.4235, 38.0038 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Platforms"]
-position = Vector2( 799.643, 414.521 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Platforms/StaticBody2D3"]
-texture = ExtResource( 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platforms/StaticBody2D3"]
-polygon = PoolVector2Array( 74.428, 47.9146, 100.856, -20.5164, 99.9126, -42.2255, 90.4739, -49.7764, -84.1429, -49.7764, -95.9413, -44.1132, -101.133, -29.4832, -99.7168, -17.6847, -79.4235, 38.0038 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Platforms"]
-position = Vector2( 1008, 936 )
-scale = Vector2( 6.49524, 1.7454 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Platforms/StaticBody2D2"]
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StaticBody2D2"]
-scale = Vector2( 1, 1 )
-shape = SubResource( 1 )
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( 393237, 3, 0, 524317, 3, 0, 786456, 3, 0, 1048583, 2, 0, 1048586, 2, 0, 1048589, 2, 0, 1048592, 2, 0, 1048595, 2, 0, 1048598, 2, 0, 1048601, 2, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1228.68, 732.355 )
