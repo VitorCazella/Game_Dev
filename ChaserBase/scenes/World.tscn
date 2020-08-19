@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://img/space.jpeg" type="Texture" id=2]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/RangedEnemy.gd" type="Script" id=5]
+
+[node name="World" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2( 1.5, 1.5 )
+transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1200, 675 )
+
+[node name="space" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 548.806, 357.116 )
+
+[node name="Enemy1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 151.657, 515.895 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 377.259, 231.21 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 905.787, 258.452 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 775.62, 552.121 )
+script = ExtResource( 5 )
