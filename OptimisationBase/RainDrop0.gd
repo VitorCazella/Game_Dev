@@ -4,7 +4,7 @@ extends Node2D
 
 var maxY = 1024
 var speed
-var speedSet = true
+var speedSet = false
 signal despawn
 
 # Called when the node enters the scene tree for the first time.
@@ -17,11 +17,11 @@ func _process(delta):
 	var o = rigid.get_global_transform_with_canvas()
 	var y = o.get_origin().y
 	#print(y)
-	
+
 	if (y > maxY):
 		set_process(false)
 		emit_signal("despawn")
-		queue_free()
+		queue_free() #Delete raindrops when they get out screen
 	pass
 
 func _physics_process(delta):

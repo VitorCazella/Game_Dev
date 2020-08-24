@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 onready var UP = Vector2(0,-1)
 
-const GRAVITY = 20
+const GRAVITY = 30
 const MAXFALLSPEED = 1000
-const SPEED = 500
-const JUMP_HEIGHT = 800
+const SPEED = 800
+const JUMP_HEIGHT = 1200
 
 var motion = Vector2.ZERO
 

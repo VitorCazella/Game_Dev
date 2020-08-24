@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var raindrop_scene = preload("res://RainDrop0.tscn")
+onready var raindrop_scene = preload("res://RainDrop0.tscn") #Caching the RigidBody2D
 
 const raindrop_count = 272
 const min_speed = 50
@@ -46,7 +46,8 @@ func _process(delta):
 	if (frame_number % 20 == 0):
 		print('current FPS: ' + str(fps))
 	if (frame_number % 120 == 0):
-		print('avg FPS: ' + str(frame_number / sumDelta) + ', min FPS: ' + str(1.0/maxProcessDelta))
+		if sumDelta != 0 and maxProcessDelta != 0:
+			print('avg FPS: ' + str(frame_number / sumDelta) + ', min FPS: ' + str(1.0/maxProcessDelta))
 	if (sumDelta >= nextMileStone):
 		print(str(nextMileStone) + ' seconds\r\n')
 		nextMileStone = nextMileStone + 5
