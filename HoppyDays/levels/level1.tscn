@@ -45,7 +45,7 @@ centered = false
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 format = 1
-tile_data = PoolIntArray( 917515, 2, 0 )
+tile_data = PoolIntArray( 65588, 2, 0, 393257, 2, 0, 589854, 2, 0, 786452, 6, 0, 917515, 2, 0, 917540, 0, 0, 1114141, 4, 0, 1900584, 2, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 872, 752 )
