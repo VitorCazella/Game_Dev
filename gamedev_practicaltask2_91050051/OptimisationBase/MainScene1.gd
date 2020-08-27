@@ -2,7 +2,7 @@ extends Node2D
 
 onready var raindrop_scene = preload("res://RainDrop0.tscn") #Caching the RigidBody2D
 
-const raindrop_count = 1360
+const raindrop_count = 272
 const min_speed = 50
 const speed_range = 100
 

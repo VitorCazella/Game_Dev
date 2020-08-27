@@ -1,9 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/World.gd" type="Script" id=2]
 [ext_resource path="res://worldenvironment.tres" type="Environment" id=3]
 [ext_resource path="res://img/Concrete_001_COLOR.png" type="Texture" id=4]
+[ext_resource path="res://scenes/CollectableObject.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=6]
+[ext_resource path="res://tdata/data.hterrain" type="Resource" id=7]
+[ext_resource path="res://textures/grass/Ground037_2K_Normal.jpg" type="Texture" id=8]
+[ext_resource path="res://textures/grass/Ground037_2K_Color.jpg" type="Texture" id=9]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -11,7 +16,7 @@
 size = Vector3( 30, 2, 30 )
 
 [sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.345098, 0.541176, 0.270588, 1 )
+albedo_color = Color( 0.596078, 0.596078, 0.596078, 1 )
 albedo_texture = ExtResource( 4 )
 
 [sub_resource type="CubeMesh" id=4]
@@ -27,8 +32,11 @@ metallic_specular = 1.0
 [node name="World" type="Spatial"]
 script = ExtResource( 2 )
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+
 [node name="Floor" type="StaticBody" parent="."]
-transform = Transform( 25.374, 0, 0, 0, 1, 0, 0, 0, 8.21964, 0, 0, 0 )
+transform = Transform( 0.934818, 0, 0, 0, 1, 0, 0, 0, 1.05451, 0, 0, 0 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -41,8 +49,22 @@ shape = SubResource( 1 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
+[node name="Floor2" type="StaticBody" parent="."]
+transform = Transform( 0.934818, 0, 0, 0, 1, 0, 0, 0, 1.05451, -27.5691, 1.99021, 0.000348091 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor2"]
+transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor2"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
 [node name="SpotLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.352238, 0.840313, -0.41207, -0.551318, 0.169489, 0.816898, 0.756292, 0.514924, 0.403579, 0, 22.8714, 21.5367 )
+transform = Transform( 0.7721, 0.203533, -0.602026, 0.522886, 0.334941, 0.78384, 0.361181, -0.919994, 0.152183, 120.362, 123.938, 69.1438 )
 
 [node name="KinematicBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.15715, 7.33622 )
@@ -62,5 +84,29 @@ material/0 = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 2.5, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 6 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 3 )
+[node name="CollectableObject" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.33352, 2.70661, 2.70157 )
+
+[node name="HTerrain" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -40 )
+script = ExtResource( 6 )
+collision_enabled = true
+ambient_wind = 0.0
+lod_scale = 2.0
+custom_globalmap_shader = null
+map_scale = Vector3( 0.5, 1, 0.5 )
+_terrain_data = ExtResource( 7 )
+chunk_size = 32
+shader_type = "Classic4Lite"
+custom_shader = null
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+ground/albedo_bump_0 = ExtResource( 9 )
+ground/normal_roughness_0 = ExtResource( 8 )
+ground/albedo_bump_1 = null
+ground/normal_roughness_1 = null
+ground/albedo_bump_2 = null
+ground/normal_roughness_2 = null
+ground/albedo_bump_3 = null
+ground/normal_roughness_3 = null

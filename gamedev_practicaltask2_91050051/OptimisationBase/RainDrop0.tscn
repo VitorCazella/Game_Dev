@@ -23,3 +23,63 @@ disabled = true
 [node name="Sprite" type="Sprite" parent="RigidBody2D/CollisionShape2D"]
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 2 )
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2( 16.125, 6.375 )
+mode = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D2/CollisionShape2D"]
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 2 )
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2( 36.5, -1.125 )
+mode = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D3/CollisionShape2D"]
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 2 )
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+position = Vector2( -21.875, -8.5 )
+mode = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D4/CollisionShape2D"]
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 2 )
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="."]
+position = Vector2( -40.75, 7.5 )
+mode = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D5/CollisionShape2D"]
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 2 )
