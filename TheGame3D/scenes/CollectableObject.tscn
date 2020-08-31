@@ -10,7 +10,6 @@ albedo_color = Color( 0.211765, 0.333333, 0.898039, 1 )
 [sub_resource type="SphereShape" id=3]
 
 [sub_resource type="SphereShape" id=4]
-radius = 2.15489
 
 [node name="CollectableObject" type="StaticBody"]
 script = ExtResource( 1 )
@@ -28,8 +27,10 @@ shape = SubResource( 3 )
 
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1.82865, 0, 0, 0, 1, 0, 0, 0, 1.82865, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 4 )
-disabled = true
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

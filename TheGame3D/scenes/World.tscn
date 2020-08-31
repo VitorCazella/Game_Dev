@@ -1,14 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/World.gd" type="Script" id=2]
 [ext_resource path="res://worldenvironment.tres" type="Environment" id=3]
 [ext_resource path="res://img/Concrete_001_COLOR.png" type="Texture" id=4]
 [ext_resource path="res://scenes/CollectableObject.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=6]
-[ext_resource path="res://tdata/data.hterrain" type="Resource" id=7]
-[ext_resource path="res://textures/grass/Ground037_2K_Normal.jpg" type="Texture" id=8]
-[ext_resource path="res://textures/grass/Ground037_2K_Color.jpg" type="Texture" id=9]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -86,27 +82,3 @@ shape = SubResource( 6 )
 
 [node name="CollectableObject" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.33352, 2.70661, 2.70157 )
-
-[node name="HTerrain" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -40 )
-script = ExtResource( 6 )
-collision_enabled = true
-ambient_wind = 0.0
-lod_scale = 2.0
-custom_globalmap_shader = null
-map_scale = Vector3( 0.5, 1, 0.5 )
-_terrain_data = ExtResource( 7 )
-chunk_size = 32
-shader_type = "Classic4Lite"
-custom_shader = null
-shader_params/u_ground_uv_scale = 20
-shader_params/u_depth_blending = true
-shader_params/u_triplanar = false
-ground/albedo_bump_0 = ExtResource( 9 )
-ground/normal_roughness_0 = ExtResource( 8 )
-ground/albedo_bump_1 = null
-ground/normal_roughness_1 = null
-ground/albedo_bump_2 = null
-ground/normal_roughness_2 = null
-ground/albedo_bump_3 = null
-ground/normal_roughness_3 = null

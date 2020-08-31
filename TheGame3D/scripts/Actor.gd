@@ -77,7 +77,7 @@ func walk(delta):
 	velocity.z = temp_velocity.z
 	
 	# move
-	velocity = move_and_slide(velocity, Vector3(0, 1, 0))
+	move_and_slide(velocity, Vector3(0, 1, 0))
 
 func fly(delta):
 	direction = Vector3()
@@ -102,3 +102,6 @@ func fly(delta):
 	
 func end_game():
 	get_tree().reload_current_scene()
+
+func playCoin():
+	$AudioStreamPlayer3D.play()
