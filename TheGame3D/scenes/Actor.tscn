@@ -63,3 +63,5 @@ __meta__ = {
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 3 )
+unit_db = -20.0
+pitch_scale = 0.52

@@ -82,3 +82,15 @@ shape = SubResource( 6 )
 
 [node name="CollectableObject" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.33352, 2.70661, 2.70157 )
+
+[node name="CollectableObject2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.33352, 2.70661, -2.69066 )
+
+[node name="CollectableObject3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.33352, 2.70661, -8.39592 )
+
+[node name="CollectableObject4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97329, 4.08929, -9.78638 )
+
+[node name="CollectableObject5" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44829, 4.08929, -10.6206 )
