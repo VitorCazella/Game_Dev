@@ -8,20 +8,19 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "KinematicBody2D",
-"class": "Actor",
-"language": "GDScript",
-"path": "res://src/Actor.gd"
-} ]
+_global_script_classes=[  ]
 _global_script_class_icons={
-"Actor": ""
+
 }
 
 [application]
 
 config/name="Project_VitorCazella"
 run/main_scene="res://src/level.tscn"
+
+[display]
+
+window/vsync/use_vsync=false
 
 [rendering]
 
