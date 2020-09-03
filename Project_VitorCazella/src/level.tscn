@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Floor.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/PhysicsPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/level.gd" type="Script" id=18]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=19]
 
@@ -9,29 +8,36 @@
 rotation = -6.28319
 script = ExtResource( 18 )
 
-[node name="PhysicsPlayer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 600.98, 355.3 )
-mode = 0
-mass = 10.0
-gravity_scale = 5.0
-
 [node name="Player" parent="." instance=ExtResource( 19 )]
 position = Vector2( 384, 384 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2( 0.5, 0.5 )
 current = true
+zoom = Vector2( 1.5, 1.5 )
+smoothing_enabled = true
+smoothing_speed = 10.0
 
 [node name="Floor" parent="." instance=ExtResource( 1 )]
-position = Vector2( 776.665, 512.001 )
+position = Vector2( 617.407, 592.818 )
+rotation = -1.56916
 
 [node name="Floor2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 259.749, 511.999 )
+position = Vector2( 1095.47, 238.436 )
+rotation = -1.56916
+
+[node name="Floor3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2011.16, 609.473 )
+rotation = -1.56916
 
 [node name="Floor4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1009, 279.501 )
-rotation = 1.5708
+position = Vector2( 2287.06, 300.28 )
+rotation = -1.56916
 
 [node name="Floor5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 24.9998, 275.496 )
-rotation = 1.5708
+position = Vector2( 2774.63, 60.0623 )
+rotation = -1.56916
+
+[node name="Floor6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2779.39, 730.775 )
+rotation = -1.56916

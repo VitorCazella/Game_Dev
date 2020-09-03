@@ -1,71 +1,51 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/Slimes/Slime_Medium_Orange.png" type="Texture" id=1]
+[ext_resource path="res://assets/Character/ship.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
+[ext_resource path="res://src/Animation.gd" type="Script" id=3]
+[ext_resource path="res://assets/Character/ship_.png" type="Texture" id=4]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 97.4271
+height = 109.642
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 1 )
-region = Rect2( 96, 32, 32, 32 )
-
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
-"name": "idle",
-"speed": 15.0
+"name": "stoped",
+"speed": 5.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "moving",
-"speed": 30.0
+"speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=10]
-radius = 5.51756
-height = 3.37058
-
 [node name="Player" type="KinematicBody2D"]
-scale = Vector2( 2, 2 )
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 9 )
-animation = "moving"
-frame = 1
-speed_scale = 0.5
-playing = true
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 82.728, 1.34915, 50.285, -19.7545, 102.572, -17.2347, 101.627, -64.4817, -11.4511, -62.5918, -65.3128, -96.6097, -56.8083, -77.7109, -56.4933, -39.5983, -100.906, -39.5983, -92.4011, -3.69054, -92.4011, 14.2634, -100.906, 41.3517, -57.4382, 41.6666, -57.1233, 80.0942, -65.9427, 99.623, -10.8212, 64.9752, 102.257, 69.0699, 102.257, 20.563, 50.915, 22.4528 )
+
+[node name="AreaDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="physicalArea" type="CollisionShape2D" parent="AreaDetection"]
 rotation = 1.5708
-shape = SubResource( 10 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "moving"
+script = ExtResource( 3 )
+[connection signal="animate" from="." to="AnimatedSprite" method="_on_Player_animate"]

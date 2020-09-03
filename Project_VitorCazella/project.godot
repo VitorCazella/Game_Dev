@@ -18,10 +18,6 @@ _global_script_class_icons={
 config/name="Project_VitorCazella"
 run/main_scene="res://src/level.tscn"
 
-[display]
-
-window/vsync/use_vsync=false
-
 [rendering]
 
 environment/default_environment="res://default_env.tres"
