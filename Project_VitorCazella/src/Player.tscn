@@ -48,4 +48,6 @@ shape = SubResource( 1 )
 frames = SubResource( 2 )
 animation = "moving"
 script = ExtResource( 3 )
+
+[node name="bullet_container" type="Node" parent="."]
 [connection signal="animate" from="." to="AnimatedSprite" method="_on_Player_animate"]

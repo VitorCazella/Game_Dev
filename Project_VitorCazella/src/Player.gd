@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
 
-var MAX_SPEED = 2000
-var ACCEL = 500
+var MAX_SPEED = 3000
+var ACCEL = 2000
 var motion = Vector2.ZERO
+
+onready var bullet_container = get_node("bullet_container")
 
 var fps = 60.0 # Initial ideal value for running average
 var frame_number = 0;
@@ -26,10 +28,14 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var axis = get_input_axis()
+	
+	if Input.is_action_just_pressed("ui_select"):
+		shoot()
+	
 	if axis == Vector2.ZERO:
-		apply_friction(ACCEL * delta * 0.25)
+		apply_friction(ACCEL * delta * 1)
 	else:
-		rotation = axis.angle()#get_local_mouse_position().angle()
+		rotation = lerp_angle(rotation, axis.angle(), 0.25)
 		apply_movement(axis * ACCEL * delta)
 	
 	animate(axis)
@@ -54,6 +60,13 @@ func apply_movement(acceleration):
 
 func animate(axis):
 	emit_signal("animate", axis)
+
+func shoot():
+	var projectile = load("res://src/Bullet.tscn")
+	var bullet = projectile.instance()
+	bullet_container.add_child(bullet)
+	bullet.start_at(rotation, position)
+	pass
 
 func fpsCount(delta):
 	frame_number = frame_number + 1
@@ -81,3 +94,11 @@ func fpsCount(delta):
 		print(str(nextMileStone) + ' seconds\r\n')
 		nextMileStone = nextMileStone + 5
 	pass
+
+func lerp_angle(from, to, weight):
+	return from + short_angle_dist(from, to) * weight
+
+func short_angle_dist(from, to):
+	var max_angle = PI * 2
+	var difference = fmod(to - from, max_angle)
+	return fmod(2 * difference, max_angle) - difference

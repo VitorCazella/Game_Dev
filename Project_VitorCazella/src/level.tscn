@@ -1,43 +1,72 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/Floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/level.gd" type="Script" id=18]
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=19]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 1725.79 )
 
 [node name="level" type="Node2D"]
 rotation = -6.28319
 script = ExtResource( 18 )
 
 [node name="Player" parent="." instance=ExtResource( 19 )]
-position = Vector2( 384, 384 )
+position = Vector2( -91.7111, 13.9991 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-scale = Vector2( 0.5, 0.5 )
+[node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 1.5, 1.5 )
 smoothing_enabled = true
 smoothing_speed = 10.0
 
-[node name="Floor" parent="." instance=ExtResource( 1 )]
-position = Vector2( 617.407, 592.818 )
-rotation = -1.56916
+[node name="Label" type="Label" parent="Camera2D"]
+margin_left = 1000.0
+margin_top = -750.0
+margin_right = 1336.0
+margin_bottom = -561.0
+text = "Timer
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Floor2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1095.47, 238.436 )
-rotation = -1.56916
+[node name="Borders" type="Node2D" parent="."]
 
-[node name="Floor3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2011.16, 609.473 )
-rotation = -1.56916
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+position = Vector2( 1360.46, 26.9756 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Floor4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2287.06, 300.28 )
-rotation = -1.56916
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+shape = SubResource( 1 )
 
-[node name="Floor5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2774.63, 60.0623 )
-rotation = -1.56916
+[node name="StaticBody2D2" type="StaticBody2D" parent="Borders"]
+position = Vector2( -1403.2, 8.08577 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Floor6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2779.39, 730.775 )
-rotation = -1.56916
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Borders"]
+position = Vector2( 1.28711, -773.436 )
+rotation = 1.5708
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Borders"]
+position = Vector2( 1.28026, 759.416 )
+rotation = 1.5708
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4"]
+shape = SubResource( 1 )
