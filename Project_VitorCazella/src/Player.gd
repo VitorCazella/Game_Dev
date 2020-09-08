@@ -22,7 +22,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	fpsCount(delta)
+	#fpsCount(delta)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,7 +65,7 @@ func shoot():
 	var projectile = load("res://src/Bullet.tscn")
 	var bullet = projectile.instance()
 	bullet_container.add_child(bullet)
-	bullet.start_at(rotation, position)
+	bullet.start_at(rotation, global_position)
 	pass
 
 func fpsCount(delta):
