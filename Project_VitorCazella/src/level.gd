@@ -2,8 +2,8 @@ extends Node2D
 
 onready var timer = get_node("Timer")
 onready var label = get_node("Camera2D/Label")
-onready var window = $PopupMenu
-onready var score = $PopupMenu/Score
+onready var window = $CanvasLayer/Pause/PopupMenu
+onready var score = $CanvasLayer/Pause/PopupMenu/Score
 
 var enemiesDefeated = 0
 

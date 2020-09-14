@@ -4,7 +4,7 @@ extends Area2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+#onready var player = get_tree().get_node()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +17,6 @@ func _ready():
 
 
 func _on_Saw_body_entered(body):
-	get_parent().get_parent().enemiesDefeated += 1
+#	get_parent().get_parent().enemiesDefeated += 1
 	queue_free()
 	pass # Replace with function body.
