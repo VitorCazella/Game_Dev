@@ -1,11 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://src/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/space.jpg" type="Texture" id=2]
+[ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/spacebackground.jpg" type="Texture" id=2]
 [ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/fonts/slkscreb.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/controls/LargeHandleFilled.png" type="Texture" id=5]
+[ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Path2D.gd" type="Script" id=7]
+[ext_resource path="res://src/Borders.tscn" type="PackedScene" id=8]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( -60.6129, -101.022, 60.6129, 101.022, 1237.56, -135.368, -121.226, -107.756, 121.226, 107.756, 1308.84, 308.3, -186.329, -24.6942, 186.329, 24.6942, 1675.89, 356.408, 44.8985, -125.716, -44.8985, 125.716, 1830.9, 632.587, 38.1637, -53.8782, -38.1637, 53.8782, 1612.19, 797.914, 0, 0, 0, 0, 1592.14, 1028.15, 69.5926, -53.8782, -69.5926, 53.8782, 1562.8, 1217.72, 0, 0, 0, 0, 1264.22, 1246.9, 44.8985, 154.9, -44.8985, -154.9, 1059.94, 1074.04, 69.5926, 134.695, -69.5926, -134.695, 1073.41, 714.852, 78.5723, 89.797, -78.5723, -89.797, 721.21, 486.728, 20.2043, 85.3071, -20.2043, -85.3071, 646.871, 299.541, 107.756, 15.7145, -107.756, -15.7145, 90.1295, -57.4016, -26.9391, -83.0622, 26.9391, 83.0622, -152.322, 355.664, -96.5317, -76.3274, 96.5317, 76.3274, 341.561, 526.279, 22.4492, -127.961, -22.4492, 127.961, 720.953, 1026.9, 146.107, -10.6908, -146.107, 10.6908, 393.194, 1419.76, 17.818, 131.853, -17.818, -131.853, 155.869, 1188.19, 106.908, 71.2719, -106.908, -71.2719, 252.086, 860.341, 28.5088, 160.362, -28.5088, -160.362, -75.7644, 739.178, -188.871, 81.9627, 188.871, -81.9627, 216.45, 336.492, -195.998, 171.053, 195.998, -171.053, 708.226, 215.33, -96.2171, 110.471, 96.2171, -110.471, 922.042, -44.8125, 0, 0, 0, 0, 1237.56, -135.368 )
+}
+
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 4 )
 
@@ -13,12 +22,8 @@ font_data = ExtResource( 4 )
 
 [node name="Background" type="CanvasLayer" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_offset = Vector2( 1, 1 )
-
-[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer"]
+[node name="Sprite" type="Sprite" parent="Background"]
+scale = Vector2( 0.307692, 0.259615 )
 texture = ExtResource( 2 )
 centered = false
 
@@ -26,7 +31,18 @@ centered = false
 
 [node name="Player" parent="Entities" instance=ExtResource( 1 )]
 position = Vector2( 910.933, 506.602 )
-joystickPath = NodePath("../../HUD/Joystick")
+joystickPath = NodePath("../../HUD/Control/Joystick")
+
+[node name="Path2D" type="Path2D" parent="Entities"]
+curve = SubResource( 1 )
+script = ExtResource( 7 )
+speed = 500
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Entities/Path2D"]
+position = Vector2( 1237.56, -135.368 )
+rotation = 1.05198
+
+[node name="Enemy" parent="Entities/Path2D/PathFollow2D" instance=ExtResource( 6 )]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -42,16 +58,32 @@ anchor_left = 0.847917
 anchor_top = 0.00462963
 anchor_right = 0.997396
 anchor_bottom = 0.107407
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Score"
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Joystick" parent="HUD" instance=ExtResource( 3 )]
-margin_left = 154.0
-margin_top = -404.0
-margin_right = 454.0
-margin_bottom = -104.0
+[node name="Joystick" parent="HUD/Control" instance=ExtResource( 3 )]
+margin_left = 72.5178
+margin_top = -392.597
+margin_right = 372.518
+margin_bottom = -92.5969
 _pressed_color = Color( 1, 0.0784314, 0.0784314, 1 )
+visibility_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="HUD/Control"]
+anchor_left = 0.847917
+anchor_top = 0.679879
+anchor_right = 0.934584
+anchor_bottom = 0.833953
+margin_right = 41.6
+margin_bottom = 41.6001
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Borders" parent="." instance=ExtResource( 8 )]

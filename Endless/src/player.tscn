@@ -59,4 +59,5 @@ scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 4 )
 animation = "moving"
 script = ExtResource( 3 )
+path = NodePath("../Particles2D")
 [connection signal="animate" from="." to="AnimatedSprite" method="_on_Player_animate"]

@@ -17,23 +17,19 @@ func _ready():
 func _physics_process(delta):
 	var axis = get_input_axis()
 	
-	if joystick and joystick.is_working:
-		rotation = lerp_angle(rotation, joystick.output.angle(), 0.1)
-		move_and_slide(joystick.output * ACCEL)
-	
 	if Input.is_action_just_pressed("ui_select"):
 		shoot()
 	
-	if axis == Vector2.ZERO:
+	if axis == Vector2.ZERO and joystick.output == Vector2.ZERO:
 		apply_friction(ACCEL * delta * 1)
-		$Particles2D.set_emitting(false)
-	else:
-		$Particles2D.set_emitting(true)
-		rotation = lerp_angle(rotation, axis.angle(), 0.1)
-		
+	elif axis != Vector2.ZERO:
+		rotation = lerp_angle(rotation, axis.angle(), 0.25)
 		apply_movement(axis * ACCEL * delta)
-	
-	animate(axis)
+	elif joystick.output != Vector2.ZERO:
+		rotation = lerp_angle(rotation, joystick.output.angle(), 0.5)
+		apply_movement(joystick.output * ACCEL * delta)
+		
+	animate(motion)
 	motion = move_and_slide(motion)
 
 func get_input_axis():
@@ -41,7 +37,7 @@ func get_input_axis():
 	axis.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	axis.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	
-	return axis.normalized()
+	return axis
 
 func apply_friction(amount):
 	if motion.length() > amount:
@@ -70,3 +66,8 @@ func short_angle_dist(from, to):
 	var max_angle = PI * 2
 	var difference = fmod(to - from, max_angle)
 	return fmod(2 * difference, max_angle) - difference
+
+
+func _on_TextureButton_pressed():
+	shoot()
+	pass # Replace with function body.
