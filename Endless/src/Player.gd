@@ -7,6 +7,8 @@ export var MAX_SPEED = 2000
 export var ACCEL = 1000
 var motion = Vector2.ZERO
 
+var canShoot = true
+
 onready var bullet_container = get_node("bullet_container")
 
 signal animate
@@ -53,10 +55,13 @@ func animate(axis):
 	emit_signal("animate", axis)
 
 func shoot():
-	var projectile = load("res://src/Bullet.tscn")
-	var bullet = projectile.instance()
-	bullet_container.add_child(bullet)
-	bullet.start_at(rotation, global_position)
+	if canShoot:
+		var projectile = load("res://src/Bullet.tscn")
+		var bullet = projectile.instance()
+		bullet_container.add_child(bullet)
+		bullet.start_at(rotation, global_position)
+		canShoot = false
+		$Timer.start(0.2)
 	pass
 
 func lerp_angle(from, to, weight):
@@ -70,4 +75,6 @@ func short_angle_dist(from, to):
 
 func _on_TextureButton_pressed():
 	shoot()
-	pass # Replace with function body.
+
+func _on_Timer_timeout():
+	canShoot = true
