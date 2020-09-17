@@ -1,14 +1,8 @@
 extends KinematicBody2D
 
-export (NodePath) var path
 onready var player = get_node("../../..")
 
 signal despawn
-
-func _on_Area2D_area_entered(area):
-	$".".queue_free()
-	player.score += 1
-
 
 var speed = 300
 var angular_speed = 0
@@ -25,6 +19,7 @@ func _ready():
 	_angle_change_timer.start()
 
 	_change_direction()
+	pass
 
 
 func _physics_process(delta):
@@ -34,10 +29,9 @@ func _physics_process(delta):
 	var forward = angle_to_direction(rotation)
 	position = (position + forward * speed * delta)
 	
-	if not get_node("VisibilityNotifier2D").is_on_screen():
-		emit_signal("despawn")
-		set_process(false)
-		queue_free()
+#	if !get_node("VisibilityNotifier2D").is_on_screen():
+#		emit_signal("despawn")
+#		queue_free()
 
 
 func _change_direction():
@@ -48,8 +42,6 @@ static func angle_to_direction(angle):
 	return Vector2(cos(angle), -sin(angle))
 
 
-func _on_VisibilityNotifier2D_screen_exited():
-	print("got out")
-	emit_signal("despawn")
-	set_process(false)
-	queue_free() #Delete raindrops when they get out screen
+func _on_Area2D_body_entered(body):
+	#queue_free()
+	player.score += 1
