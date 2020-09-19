@@ -1,15 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/spacebackground.jpg" type="Texture" id=2]
 [ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/fonts/slkscreb.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/controls/LargeHandleFilled.png" type="Texture" id=5]
-[ext_resource path="res://src/Spawner.gd" type="Script" id=6]
+[ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/tech-space.wav" type="AudioStream" id=7]
 [ext_resource path="res://src/Borders.tscn" type="PackedScene" id=8]
 [ext_resource path="res://GameData.gd" type="Script" id=9]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 4 )
 
@@ -27,15 +28,28 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 910.933, 506.602 )
+position = Vector2( 978.804, 534.81 )
+collision_mask = 1
 joystickPath = NodePath("../HUD/Control/Joystick")
 
 [node name="Spawner" type="Node2D" parent="."]
-script = ExtResource( 6 )
-enemy = "res://src/Enemy.tscn"
-numberOfAsteriods = 10
+position = Vector2( 267.001, 167.286 )
 
-[node name="Position2D" type="Position2D" parent="Spawner"]
+[node name="Node2D" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( -6.23779, 83.7621 )
+path = NodePath("../..")
+
+[node name="Node2D2" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( 1286, 140 )
+path = NodePath("../..")
+
+[node name="Node2D3" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( 902, 742 )
+path = NodePath("../..")
+
+[node name="Node2D4" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( 322, 682 )
+path = NodePath("../..")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -53,7 +67,7 @@ anchor_left = 0.847917
 anchor_top = 0.00462963
 anchor_right = 0.997396
 anchor_bottom = 0.0666667
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Score: 0"
 valign = 2
 __meta__ = {
@@ -61,10 +75,10 @@ __meta__ = {
 }
 
 [node name="Joystick" parent="HUD/Control" instance=ExtResource( 3 )]
-margin_left = 72.5178
-margin_top = -392.597
-margin_right = 372.518
-margin_bottom = -92.5969
+margin_left = 84.4098
+margin_top = -373.57
+margin_right = 384.41
+margin_bottom = -73.5696
 _pressed_color = Color( 1, 0.0784314, 0.0784314, 1 )
 visibility_mode = 1
 
@@ -83,6 +97,10 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 984.189, 469.871 )
-current = true
 zoom = Vector2( 3, 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -25.0
+autoplay = true
 [connection signal="pressed" from="HUD/Control/TextureButton" to="Player" method="_on_TextureButton_pressed"]
