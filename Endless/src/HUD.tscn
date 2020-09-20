@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/controls/LargeHandleFilled.png" type="Texture" id=3]
 [ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=4]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -22,7 +22,7 @@ anchor_left = 0.847917
 anchor_top = 0.00462963
 anchor_right = 0.997396
 anchor_bottom = 0.107407
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Score"
 valign = 2
 __meta__ = {

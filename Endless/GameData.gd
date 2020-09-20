@@ -1,8 +1,11 @@
 extends Node2D
 
-onready var label = $HUD/Control/Label
+onready var scoreHUD = $HUD/Control/Score
+onready var asteroidsHUD = $HUD/Control/Asteroids
 
 var score = 0
+var numberOfAsteriods = 0
 
 func _process(delta):
-	label.text = ("Score: " + String(score))
+	scoreHUD.text = ("Score: " + String(score))
+	asteroidsHUD.text = ("Asteroids left: " + String(numberOfAsteriods))
