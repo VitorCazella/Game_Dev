@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/slkscrb.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/slkscr.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/space.jpg" type="Texture" id=3]
+[ext_resource path="res://src/StartScreen.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 128
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="StartScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+level = "res://src/Level.tscn"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -358.0
+margin_top = -243.0
+margin_right = 358.0
+margin_bottom = 243.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_right = 716.0
+margin_bottom = 261.0
+custom_fonts/font = SubResource( 1 )
+text = "Endless
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play" type="Button" parent="VBoxContainer"]
+margin_top = 265.0
+margin_right = 716.0
+margin_bottom = 336.0
+custom_fonts/font = SubResource( 2 )
+text = "Play"
+
+[node name="levels" type="Button" parent="VBoxContainer"]
+margin_top = 340.0
+margin_right = 716.0
+margin_bottom = 411.0
+custom_fonts/font = SubResource( 2 )
+text = "Levels"
+
+[node name="credits" type="Button" parent="VBoxContainer"]
+margin_top = 415.0
+margin_right = 716.0
+margin_bottom = 486.0
+custom_fonts/font = SubResource( 2 )
+text = "Credits"
+[connection signal="button_up" from="VBoxContainer/play" to="." method="_on_play_button_up"]

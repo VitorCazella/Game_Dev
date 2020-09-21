@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Endless"
-run/main_scene="res://src/Level.tscn"
+run/main_scene="res://src/StartScreen.tscn"
 config/icon="res://assets/ship.png"
 
 [display]

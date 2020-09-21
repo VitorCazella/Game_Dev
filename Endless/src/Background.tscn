@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/CelestialObjects.png" type="Texture" id=1]
+[ext_resource path="res://assets/spacebackground.jpg" type="Texture" id=2]
+
+[node name="Background" type="CanvasLayer"]
+layer = -5
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.307692, 0.259615 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 15.1216, 588.436 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 258, 95, 125, 128 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 1763.96, 140.429 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 0, 128, 96 )
