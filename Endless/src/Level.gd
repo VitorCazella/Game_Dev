@@ -6,11 +6,12 @@ onready var asteroidsHUD = $HUD/Control/Asteroids
 var score = 0
 var numberOfAsteriods = 0
 
-signal currentLevel
 
 func _ready():
-	emit_signal("currentLevel", self.name)
+	pass
 
 func _process(delta):
 	scoreHUD.text = ("Score: " + String(score))
 	asteroidsHUD.text = ("Asteroids left: " + String(numberOfAsteriods))
+	if numberOfAsteriods == 0:
+		get_tree().change_scene("res://src/Game over.tscn")

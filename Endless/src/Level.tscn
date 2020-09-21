@@ -8,13 +8,13 @@
 [ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/tech-space.wav" type="AudioStream" id=7]
 [ext_resource path="res://src/Borders.tscn" type="PackedScene" id=8]
-[ext_resource path="res://GameData.gd" type="Script" id=9]
+[ext_resource path="res://src/Level.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 4 )
 
-[node name="Level" type="Node2D"]
+[node name="Level1" type="Node2D"]
 script = ExtResource( 9 )
 
 [node name="Borders" parent="." instance=ExtResource( 8 )]
@@ -22,38 +22,36 @@ script = ExtResource( 9 )
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 978.804, 534.81 )
+position = Vector2( 270.804, 174.81 )
 collision_mask = 1
-joystickPath = NodePath("../HUD/Control/Joystick")
+joystickPath = NodePath("../../Level1/HUD/Control/Joystick")
 
 [node name="Spawner" type="Node2D" parent="."]
 position = Vector2( 267.001, 167.286 )
 
 [node name="Node2D" parent="Spawner" instance=ExtResource( 6 )]
-position = Vector2( -6.23779, 83.7621 )
-path = NodePath("../..")
+position = Vector2( 633.762, 323.762 )
 
 [node name="Node2D2" parent="Spawner" instance=ExtResource( 6 )]
 position = Vector2( 1286, 140 )
-path = NodePath("../..")
 
 [node name="Node2D3" parent="Spawner" instance=ExtResource( 6 )]
-position = Vector2( 902, 742 )
-path = NodePath("../..")
+position = Vector2( 1106, 674 )
 
 [node name="Node2D4" parent="Spawner" instance=ExtResource( 6 )]
 position = Vector2( 322, 682 )
-path = NodePath("../..")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="HUD"]
-anchor_left = -0.03366
-anchor_top = -0.0166767
-anchor_right = 0.96634
-anchor_bottom = 0.983323
-margin_left = 2.1189
-margin_right = 2.1189
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -83,6 +81,7 @@ __meta__ = {
 }
 
 [node name="Joystick" parent="HUD/Control" instance=ExtResource( 3 )]
+visible = false
 margin_left = 84.4098
 margin_top = -373.57
 margin_right = 384.41
@@ -91,6 +90,7 @@ _pressed_color = Color( 1, 0.0784314, 0.0784314, 1 )
 visibility_mode = 1
 
 [node name="TextureButton" type="TextureButton" parent="HUD/Control"]
+visible = false
 anchor_left = 0.847917
 anchor_top = 0.679879
 anchor_right = 0.934584
@@ -98,7 +98,6 @@ anchor_bottom = 0.833953
 margin_right = 41.6
 margin_bottom = 41.6001
 rect_scale = Vector2( 0.8, 0.8 )
-focus_mode = 1
 texture_normal = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -112,4 +111,3 @@ zoom = Vector2( 3, 3 )
 stream = ExtResource( 7 )
 volume_db = -25.0
 autoplay = true
-[connection signal="pressed" from="HUD/Control/TextureButton" to="Player" method="_on_TextureButton_pressed"]
