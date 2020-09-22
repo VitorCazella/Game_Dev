@@ -24,6 +24,10 @@ config/name="Endless"
 run/main_scene="res://src/StartScreen.tscn"
 config/icon="res://assets/ship.png"
 
+[autoload]
+
+GameData="*res://GameData.gd"
+
 [display]
 
 window/size/width=1920

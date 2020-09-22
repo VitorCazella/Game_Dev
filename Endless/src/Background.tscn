@@ -12,14 +12,14 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 48.7575, 729.707 )
+position = Vector2( 108.323, 976.117 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 258, 95, 125, 128 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 1763.96, 140.429 )
+position = Vector2( 1814.9, 86.4899 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 region_enabled = true

@@ -7,4 +7,4 @@ func _ready():
 
 func _process(delta):
 	if player_vars.numberOfAsteriods == 0:
-		get_tree().change_scene("res://src/NextLevel.tscn")
+		get_tree().change_scene("res://src/Game over.tscn")
