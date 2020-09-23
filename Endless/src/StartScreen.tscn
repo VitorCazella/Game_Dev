@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/slkscrb.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/slkscr.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/space.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/background/space.jpg" type="Texture" id=3]
 [ext_resource path="res://src/StartScreen.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -10,6 +10,10 @@ size = 128
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 64
 font_data = ExtResource( 2 )
 
@@ -57,8 +61,9 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBoxContainer"]
+margin_top = 37.0
 margin_right = 716.0
-margin_bottom = 261.0
+margin_bottom = 298.0
 custom_fonts/font = SubResource( 1 )
 text = "Endless
 "
@@ -69,24 +74,25 @@ __meta__ = {
 }
 
 [node name="play" type="Button" parent="VBoxContainer"]
-margin_top = 265.0
+margin_top = 302.0
 margin_right = 716.0
-margin_bottom = 336.0
+margin_bottom = 373.0
 custom_fonts/font = SubResource( 2 )
 text = "Play"
 
-[node name="levels" type="Button" parent="VBoxContainer"]
-margin_top = 340.0
-margin_right = 716.0
-margin_bottom = 411.0
-custom_fonts/font = SubResource( 2 )
-text = "Levels"
-
 [node name="credits" type="Button" parent="VBoxContainer"]
-margin_top = 415.0
+margin_top = 377.0
 margin_right = 716.0
-margin_bottom = 486.0
+margin_bottom = 448.0
 custom_fonts/font = SubResource( 2 )
 text = "Credits"
+
+[node name="exit" type="Button" parent="VBoxContainer"]
+margin_top = 452.0
+margin_right = 716.0
+margin_bottom = 523.0
+custom_fonts/font = SubResource( 3 )
+text = "Exit"
 [connection signal="button_up" from="VBoxContainer/play" to="." method="_on_play_button_up"]
 [connection signal="button_up" from="VBoxContainer/credits" to="." method="_on_credits_button_up"]
+[connection signal="button_up" from="VBoxContainer/exit" to="." method="_on_exit_button_up"]

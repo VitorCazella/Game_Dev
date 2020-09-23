@@ -10,7 +10,8 @@
 [ext_resource path="res://src/HUD.gd" type="Script" id=8]
 [ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Borders.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/tech-space.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/tech-space.wav" type="AudioStream" id=11]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 32

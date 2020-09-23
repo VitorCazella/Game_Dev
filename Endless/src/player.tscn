@@ -1,34 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/ship.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/SpaceShip.png" type="Texture" id=1]
 [ext_resource path="res://src/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/AnimatedSprite.gd" type="Script" id=3]
-[ext_resource path="res://assets/ship_.png" type="Texture" id=4]
-
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.992188, 0.784836, 0.162781, 1, 0.476563, 0.15451, 0.15451, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="ParticlesMaterial" id=3]
-lifetime_randomness = 1.0
-emission_shape = 2
-emission_box_extents = Vector3( 4, 12, 1 )
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-angular_velocity = -200.0
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-angle = 45.0
-scale = 10.0
-scale_random = 0.3
-color_ramp = SubResource( 2 )
+[ext_resource path="res://assets/player/Glow.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "moving",
 "speed": 5.0
@@ -39,6 +18,24 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.992188, 0.784836, 0.162781, 1, 0.476563, 0.15451, 0.15451, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_box_extents = Vector3( 0, 16, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.4
+scale_random = 0.5
+color_ramp = SubResource( 2 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 1041
 collision_mask = 2147484689
@@ -46,22 +43,23 @@ script = ExtResource( 2 )
 
 [node name="bullet_container" type="Node" parent="."]
 
-[node name="Particles2D" type="Particles2D" parent="."]
-position = Vector2( -44.9947, 1.15588 )
-emitting = false
-amount = 400
-local_coords = false
-process_material = SubResource( 3 )
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -33.3512, -49.9043, -6.00709, -31.55, 46.8082, -31.3627, 49.4303, -32.8611, 51.4904, -31.55, 50.9286, -9.26272, 49.0557, -8.32628, 47.3701, -9.82458, 24.8955, -10.0119, 41.1896, 0.47628, 25.6446, 11.339, 47.3701, 11.339, 48.8684, 9.6534, 50.554, 11.1517, 51.1159, 32.8772, 48.8684, 34.75, 46.9955, 33.2517, -7.3181, 32.3153, -32.0402, 49.5458, -28.8563, 39.4323, -28.2944, 21.2653, -51.1436, 21.6399, -46.2741, 5.72035, -46.2741, -4.39322, -50.3944, -19.9382, -28.4817, -19.189, -28.2944, -38.667 )
+polygon = PoolVector2Array( -47.4861, -43.0862, 46.5037, -13.2411, 46.5037, 13.0404, -47.2634, 42.8855 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 4 )
 animation = "moving"
 script = ExtResource( 3 )
 path = NodePath("../Particles2D")
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( -56.5693, 0.0106735 )
+emitting = false
+amount = 100
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+process_material = SubResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
