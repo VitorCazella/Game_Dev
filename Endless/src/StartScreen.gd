@@ -3,8 +3,6 @@ extends Control
 onready var tree = get_tree()
 onready var player_vars = get_node("/root/GameData")
 
-export (String, FILE) var level
-
 
 func _ready():
 	pass # Replace with function body.
@@ -12,7 +10,7 @@ func _ready():
 
 func _on_play_button_up():
 	player_vars.restartVars()
-	tree.change_scene(level)
+	tree.change_scene("res://src/Level.tscn")
 	pass # Replace with function body.
 
 
