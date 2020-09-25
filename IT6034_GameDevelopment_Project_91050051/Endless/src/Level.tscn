@@ -1,71 +1,78 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/controls/LargeHandleFilled.png" type="Texture" id=1]
+[ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Enemy2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Level2.gd" type="Script" id=5]
-[ext_resource path="res://assets/fonts/slkscreb.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/HUD.gd" type="Script" id=8]
-[ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/Borders.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/audio/tech-space.wav" type="AudioStream" id=11]
+[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/slkscreb.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/controls/LargeHandleFilled.png" type="Texture" id=5]
+[ext_resource path="res://src/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/audio/tech-space.wav" type="AudioStream" id=7]
+[ext_resource path="res://src/Borders.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Level.gd" type="Script" id=9]
+[ext_resource path="res://src/HUD.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
-font_data = ExtResource( 6 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
-font_data = ExtResource( 6 )
+font_data = ExtResource( 4 )
 
-[node name="Level2" type="Node2D"]
-script = ExtResource( 5 )
+[node name="Level1" type="Node2D"]
+script = ExtResource( 9 )
 
-[node name="Borders" parent="." instance=ExtResource( 10 )]
+[node name="Borders" parent="." instance=ExtResource( 8 )]
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 615.536, 201.815 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 976.825, 502.186 )
 joystickPath = NodePath("../HUD/Control/Joystick")
 
 [node name="Spawner" type="Node2D" parent="."]
+position = Vector2( 267.001, 167.286 )
 
-[node name="Enemy2" parent="Spawner" instance=ExtResource( 4 )]
-position = Vector2( 571.09, 717.716 )
-speed = 451
+[node name="Enemy" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( 243.226, 54.396 )
+rotation = 2.76098
+speed = 832
 
-[node name="Node2D" parent="Spawner" instance=ExtResource( 9 )]
-position = Vector2( 1350.64, 660.199 )
+[node name="Enemy2" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( 1269.44, 200.022 )
+speed = 404
 
-[node name="Node2D2" parent="Spawner" instance=ExtResource( 9 )]
-position = Vector2( 599.722, 314.98 )
-speed = 537
+[node name="Enemy3" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( 1046.18, 450.898 )
+rotation = -0.114088
+speed = 489
 
-[node name="Node2D3" parent="Spawner" instance=ExtResource( 9 )]
-position = Vector2( 448.532, 539.246 )
-rotation = 2.56849
-speed = 922
+[node name="Enemy4" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( 200.712, 770.034 )
+rotation = -0.188338
+speed = 861
 
-[node name="Enemy3" parent="Spawner" instance=ExtResource( 4 )]
-position = Vector2( 1367.36, 312.021 )
-rotation = -1.01578
-speed = 655
+[node name="Enemy5" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( 642.923, 289.94 )
+rotation = -0.188338
+speed = 701
+
+[node name="Enemy6" parent="Spawner" instance=ExtResource( 6 )]
+position = Vector2( 1111.64, 724.844 )
+rotation = 1.24126
+speed = 861
 
 [node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 
 [node name="Control" type="Control" parent="HUD"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Joystick" parent="HUD/Control" instance=ExtResource( 7 )]
+[node name="Joystick" parent="HUD/Control" instance=ExtResource( 3 )]
 margin_left = 141.591
 margin_top = -350.025
 margin_right = 441.591
@@ -82,7 +89,7 @@ margin_right = 41.6
 margin_bottom = 41.6001
 rect_scale = Vector2( 0.8, 0.8 )
 focus_mode = 1
-texture_normal = ExtResource( 1 )
+texture_normal = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -130,6 +137,7 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 7 )
 volume_db = -25.0
+autoplay = true
 [connection signal="pressed" from="HUD/Control/TextureButton" to="Player" method="_on_TextureButton_pressed"]
